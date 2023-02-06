@@ -1,3 +1,7 @@
+#requires 'sudo apt install python3-pip' to be run first
+#requires 'pip install requests' afterwards
+
+
 import requests
 from datetime import datetime
 
@@ -12,6 +16,7 @@ lines = data.split("\n")
 
 # Keep track of the number of requests
 total_requests = 0
+total_6_month_requests = 0
 
 # Iterate through each line
 for line in lines:
