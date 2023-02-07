@@ -38,9 +38,9 @@ for line in lines:
         date = datetime.strptime(date_str, "%d/%b/%Y:%H:%M:%S").date()
     
   # Check if the date is within the 6 month period
-     if date > datetime(1995, 6, 1).date() and date <= datetime(1995, 12, 1).date():
+        if date > datetime(1995, 6, 1).date() and date <= datetime(1995, 12, 1).date():
         # Increment the number of requests within the 6 month period
-        total_6_month_requests += 1
+            total_6_month_requests += 1
         
   # Print the total number of requests made in the time period represented by the log and in the last 6 months
 print("Total Requests:", total_requests)
