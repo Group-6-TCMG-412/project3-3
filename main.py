@@ -17,3 +17,15 @@ lines = data.split("\n")
 # Keep track of the number of requests
 total_requests = 0
 total_6_month_requests = 0
+
+# Iterate through each line
+for line in lines:
+    # Split each line into its components
+    components = line.split(" ")
+    if len(components) >= 11:
+        # Extract information about each request
+        remote_host = components[0]
+        timestamp = components[3]
+        request = components[5]
+        status = components[8]
+        size = components[9]
