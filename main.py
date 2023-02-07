@@ -31,7 +31,7 @@ for line in lines:
         status = components[8]
         size = components[9]
  #  Increment the total number of requests
-    total requests +=1
+    total_requests +=1
    
  #  Extract the date from the timestamp
     date_str = timestamp[1:]
