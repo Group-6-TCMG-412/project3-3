@@ -6,3 +6,10 @@ import requests
 from datetime import datetime
 
 url = "https://s3.amazonaws.com/tcmg476/http_access_log"
+
+# Use requests library to fetch the data from the URL
+response = requests.get(url)
+data = response.text
+
+# Split the data into individual lines
+lines = data.split("\n")
