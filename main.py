@@ -30,3 +30,18 @@ for line in lines:
         request = components[5]
         status = components[8]
         size = components[9]
+ #  Increment the total number of requests
+    total requests +=1
+   
+ #  Extract the date from the timestamp
+    date_str = timestamp[1:]
+    date = datetime.strptime(date_str, "%d/%b/%Y:%H:%M:%S").date()
+    
+  # Check if the date is within the 6 month period
+     if date > datetime(1995, 6, 1).date() and date <= datetime(1995, 12, 1).date():
+        # Increment the number of requests within the 6 month period
+     total_6_month_requests += 1
+        
+  # Print the total number of requests made in the time period represented by the log and in the last 6 months
+print("Total Requests:", total_requests)
+print("Total Requests in Last 6 Months:", total_6_month_requests) 
