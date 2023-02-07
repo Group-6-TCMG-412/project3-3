@@ -24,6 +24,7 @@ for line in lines:
     components = line.split(" ")
     if len(components) >= 11:
         # Extract information about each request
+        # Each component divided by a space delimiter stored in a different variable 
         remote_host = components[0]
         timestamp = components[3]
         request = components[5]
@@ -35,6 +36,7 @@ for line in lines:
 
         # Extract the date from the timestamp
         date_str = timestamp[1:]
+        # Remove the time component from the stamp, identify date format
         date = datetime.strptime(date_str, "%d/%b/%Y:%H:%M:%S").date()
 
         # Check if the date is within the 6 month period
