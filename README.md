@@ -1,4 +1,9 @@
 # project3
-Using Python to parse and analyze log files from an Apache web server
+## Using Python to parse and analyze log files from an Apache web server
 
-Please run 'sudo apt install python3-pip' followed by 'pip install requests' on your Linux machine
+# Please run the following commands in sequence on your Linux machine.
+1. 'sudo apt update'
+2. 'sudo apt upgrade'
+3. 'sudo apt install python3-pip'
+4. 'pip install requests'
+
