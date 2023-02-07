@@ -42,6 +42,6 @@ for line in lines:
             # Increment the number of requests within the 6 month period
          total_6_month_requests += 1
 
-# Print the total number of requests
+# Print the total number of requests made in the time period represented by the log and in the last 6 months
 print("Total Requests:", total_requests)
-print("Total Requests in 6 Months:", total_6_month_requests)
+print("Total Requests in Last 6 Months:", total_6_month_requests)
