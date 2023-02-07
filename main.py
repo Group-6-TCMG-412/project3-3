@@ -13,3 +13,7 @@ data = response.text
 
 # Split the data into individual lines
 lines = data.split("\n")
+
+# Keep track of the number of requests
+total_requests = 0
+total_6_month_requests = 0
