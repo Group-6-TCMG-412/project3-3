@@ -1,5 +1,6 @@
 #Python 3 script to save log file and process HTTP request counts
-#Code adapted from tyscript.py written by group member Ty Hawkins and tested by other members
+#Code adapted from tyscript.py written by group member Ty Hawkins with minor fixes and testing by other members
+
 #requires 'sudo apt install python3-pip' to be run first
 #requires 'pip install requests' afterwards
 
