@@ -27,6 +27,9 @@ unsuccessful_requests = 0
 # Track the number of redirected requests
 redirected_requests = 0
 
+# Initialize a dictionary to track the items
+files_dict = {}
+
 # Track the most requested file
 most_requested = defaultdict(int)
 
@@ -65,7 +68,6 @@ for line in open(LOCAL_FILE):
         week_count[week_num] += 1
         sorted_week_count = dict(sorted(week_count.items()))
 
-
         # Track the number of requests made each month
         month_count[date.strftime("%B")] += 1
 
@@ -80,14 +82,13 @@ for line in open(LOCAL_FILE):
         if status.startswith("3"):
             redirected_requests += 1
 
-        # Track the most requested file
-        most_requested[file_name] += 1
-
-        # Track the least requested file
-        if request not in least_requested:
-            least_requested[file_name] = 1
+        # Check and see if a key that matches 'file_name' exists using the 'in' operator
+        if file_name in files_dict :
+        # So we've already added this file -- let's increment the counter
+            files_dict[file_name] += 1
         else:
-            least_requested[file_name] += 1
+        # This is a new filename -- let's add it to the dictionary
+            files_dict[file_name] = 1
 
 # Calculate percentage of unsuccessful requests
 unsuccessful_percent = unsuccessful_requests / total_requests * 100
@@ -96,22 +97,34 @@ unsuccessful_percent = unsuccessful_requests / total_requests * 100
 redirected_percent = redirected_requests / total_requests * 100
 
 # Find the most requested file
-most_requested_file = max(most_requested, key=most_requested.get)
+most_requested = max(files_dict.keys(), key=(lambda k: files_dict[k]))
 
 #Find the least requested file
-least_requested_file = least_requested_file = min(least_requested, key=least_requested.get)
+least_requested = min(files_dict.keys(), key=(lambda k: files_dict[k]))
 
+# Output total requests
 print("Total Requests:", total_requests)
+
+#Output how many requests were made on each day
 print("\nRequests Made Each Day:")
 for day, count in day_count.items():
     print(day, "=", count)
+
+# Output how many requests were made on a week-by-week basis
 print("\nRequests Made Each Week:")
 for week, count in week_count.items():
     print("Week", week, "=", count)
+
+# Output how many requests were made on a per month basis
 print("\nRequests Made Each Month:")
 for month, count in month_count.items():
     print(month, "=", count)
+
+# Output percentage of the requests were not successful (any 4xx status code)    
 print("\nUnsuccessful Requests:", unsuccessful_requests, "({:.2f}%)".format(unsuccessful_percent))
+# Output percentage of the requests were redirected elsewhere (any 3xx codes)
 print("Redirected Requests:", redirected_requests, "({:.2f}%)".format(redirected_percent))
-print("\nMost Requested File:", most_requested_file)
-print("Least Requested File:", least_requested_file)
+
+# Output most and least requested file
+print("\nMost Requested File:", most_requested)
+print("Least Requested File:", least_requested)
