@@ -47,6 +47,7 @@ for line in lines:
         remote_host = components[0]
         timestamp = components[3]
         request = components[5]
+        file_name = components[6]
         status = components[8]
         size = components[9]
 
@@ -81,13 +82,13 @@ for line in lines:
             redirected_requests += 1
 
         # Track the most requested file
-        most_requested[request] += 1
+        most_requested[file_name] += 1
 
         # Track the least requested file
         if request not in least_requested:
-            least_requested[request] = 1
+            least_requested[file_name] = 1
         else:
-            least_requested[request] += 1
+            least_requested[file_name] += 1
 
 # Calculate percentage of unsuccessful requests
 unsuccessful_percent = unsuccessful_requests / total_requests * 100
@@ -104,13 +105,13 @@ least_requested_file = least_requested_file = min(least_requested, key=least_req
 print("Total Requests:", total_requests)
 print("\nRequests Made Each Day:")
 for day, count in day_count.items():
-    print(day, count)
+    print(day, "=", count)
 print("\nRequests Made Each Week:")
 for week, count in week_count.items():
-    print("Week", week, count)
+    print("Week", week, "=", count)
 print("\nRequests Made Each Month:")
 for month, count in month_count.items():
-    print(month, count)
+    print(month, "=", count)
 print("\nUnsuccessful Requests:", unsuccessful_requests, "({:.2f}%)".format(unsuccessful_percent))
 print("Redirected Requests:", redirected_requests, "({:.2f}%)".format(redirected_percent))
 print("\nMost Requested File:", most_requested_file)
